@@ -20,6 +20,18 @@ const Square = ({ handleClick, isSelected }) => {
 export const ClickOrder = () => {
   const [clickOrder, setClicOrder] = React.useState<number[]>([]);
   const isFinished = clickOrder.length === GRID_SIZE;
+
+  React.useEffect(() => {
+    if (isFinished) {
+      setTimeout(() => {
+        //while (clickOrder.length > 0) {
+        const copy = [...clickOrder];
+        copy.shift();
+        setClicOrder(copy);
+        // }
+      }, 1000);
+    }
+  }, [isFinished]);
   const handleClick = (index) => {
     if (!clickOrder.includes(index)) {
       setClicOrder([...clickOrder, index]);
@@ -31,18 +43,14 @@ export const ClickOrder = () => {
       <div className="grid">
         {/* Alternate approach */}
         {/* {renderSquares()}  */}
-        {isFinished ? (
-          <div>Finsihed..</div>
-        ) : (
-          [...Array(GRID_SIZE)].map((_, index) => {
-            return (
-              <Square
-                handleClick={() => handleClick(index)}
-                isSelected={clickOrder.includes(index)}
-              />
-            );
-          })
-        )}
+        {[...Array(GRID_SIZE)].map((_, index) => {
+          return (
+            <Square
+              handleClick={() => handleClick(index)}
+              isSelected={clickOrder.includes(index)}
+            />
+          );
+        })}
       </div>
     </div>
   );
