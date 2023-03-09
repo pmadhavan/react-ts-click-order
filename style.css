@@ -1,3 +1,16 @@
-h1, p {
+h1,
+p {
   font-family: Lato;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #777;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
