@@ -17,3 +17,7 @@ On click of the box, it's color changes to green. When all the boxes are green, 
 
 - Cannot use for loop inside jsx instead use a function with for loop and add the jsx elements to array and display array
 - Or use [...Array(n)].fill(0)
+
+### Status
+
+Incomplete
