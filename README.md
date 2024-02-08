@@ -15,8 +15,8 @@ On click of the box, it's color changes to green. When all the boxes are green, 
 
 ### Data
 
-- clickOrder array of box ids
-- isFinished
+- clickOrder array of box ids [State]
+- ReplayInProgress [State]
 
 ### Learnings
 
