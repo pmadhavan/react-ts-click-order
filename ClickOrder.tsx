@@ -19,19 +19,26 @@ const Square = ({ handleClick, isSelected }) => {
 }; */
 export const ClickOrder = () => {
   const [clickOrder, setClicOrder] = React.useState<number[]>([]);
-  const isFinished = clickOrder.length === GRID_SIZE;
+  const [isReplayInProgress, setReplayInProgress] = React.useState(false);
+  //const isFinished = clickOrder.length === GRID_SIZE;
 
   React.useEffect(() => {
-    if (isFinished) {
+    if (!isReplayInProgress && clickOrder.length === GRID_SIZE) {
+      setReplayInProgress(true);
+    }
+    if (isReplayInProgress) {
       setTimeout(() => {
         //while (clickOrder.length > 0) {
         const copy = [...clickOrder];
         copy.shift();
         setClicOrder(copy);
+        if (clickOrder.length < 1) {
+          setReplayInProgress(false);
+        }
         // }
       }, 1000);
     }
-  }, [isFinished]);
+  }, [isReplayInProgress, clickOrder]);
   const handleClick = (index) => {
     if (!clickOrder.includes(index)) {
       setClicOrder([...clickOrder, index]);

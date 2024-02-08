@@ -25,4 +25,4 @@ On click of the box, it's color changes to green. When all the boxes are green, 
 
 ### Status of the project
 
-Incomplete
+Complete
